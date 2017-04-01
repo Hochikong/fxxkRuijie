@@ -21,4 +21,4 @@ else:
 
 # restart VMware NAT service
 tgtservice = parser.get("Services", "service")
-subprocess.Popen("sc start %s" % tgtservice)
+subprocess.Popen("sc start '%s'" % tgtservice)
