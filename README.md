@@ -1,0 +1,1 @@
+This is a simple tool to restart VMware NAT service when you run Ruijie Client
