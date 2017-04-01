@@ -16,7 +16,7 @@ pid = (str(tmp.stdout.readlines()[0]).split())[1]
 
 if tgtbit == "64":
     subprocess.Popen("PStools/pssuspend64.exe %s" % pid)
-else:
+if tgtbit == "32":
     subprocess.Popen("PStools/pssuspend.exe %s" % pid)
 
 # restart VMware NAT service
