@@ -6,6 +6,7 @@ parser = ConfigParser.ConfigParser()
 parser.read("config.ini")
 tgtbit = parser.get("System", "version")
 tgtprocess = parser.get("Processes", "process")
+tgtpath = parser.get("Tools", "path")
 
 tmp = subprocess.Popen(
     "tasklist|findstr 8021x.exe",
@@ -15,9 +16,9 @@ tmp = subprocess.Popen(
 pid = (str(tmp.stdout.readlines()[0]).split())[1]
 
 if tgtbit == "64":
-    subprocess.Popen("PStools/pssuspend64.exe %s" % pid, shell=True)
+    subprocess.Popen("%s/pssuspend64.exe %s" % (tgtpath, pid), shell=True)
 if tgtbit == "32":
-    subprocess.Popen("PStools/pssuspend.exe %s" % pid, shell=True)
+    subprocess.Popen("%s/pssuspend.exe %s" % (tgtpath, pid), shell=True)
 
 # restart VMware NAT service
 tgtservice = parser.get("Services", "service")
